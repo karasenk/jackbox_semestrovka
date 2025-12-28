@@ -28,8 +28,6 @@ public class ClientWorker extends SwingWorker<Void, String> {
 
     @Override
     protected Void doInBackground() throws Exception {
-        publish("Мы теперь подключены к серверу");
-
         String message;
         while ((message = reader.readLine()) != null) {
             if (message.trim().equals("/accept")){
@@ -58,7 +56,6 @@ public class ClientWorker extends SwingWorker<Void, String> {
                 String[] row = message.trim().substring(14).split(" ");
                 int playersCount = Integer.parseInt(row[0]);
                 int selfNumber = Integer.parseInt(row[1]);
-                System.out.println("started vote...");
                 parentGUI.votingScreen.addButtons(playersCount, selfNumber);
             }
         }

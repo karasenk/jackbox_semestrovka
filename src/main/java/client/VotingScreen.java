@@ -19,18 +19,22 @@ public class VotingScreen extends JPanel {
     }
     public void addButtons(int playersCount, int selfNumber){
         buttonsPanel.setLayout(new GridLayout(2, playersCount / 2 + 1));
-        System.out.println(playersCount + " " + selfNumber);
         for (int i = 0; i < playersCount; i++){
             if (i != selfNumber){
                 JButton btn = new JButton("" + (i + 1));
                 btn.addActionListener(l -> {
                     parentGUI.worker.sendMessage("/vote " + btn.getText());
-                    buttonsPanel.setEnabled(false);
+                    for (Component comp : buttonsPanel.getComponents()) {
+                        if (comp instanceof JButton) {
+                            comp.setEnabled(false);
+                        }
+                    }
                 });
                 buttonsPanel.add(btn);
             }
         }
         add(buttonsPanel);
-        setEnabled(true);
+        revalidate();
+        repaint();
     }
 }

@@ -25,6 +25,7 @@ public class SecondRoundScreen extends JPanel {
         answerField = new JTextField();
         answerField.setBounds(10, 50, 780, 40);
         answerField.setEnabled(false);
+        answerField.setDisabledTextColor(Color.black);
         answerField.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {

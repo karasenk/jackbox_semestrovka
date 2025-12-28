@@ -71,6 +71,7 @@ public class Server{
         else {
             textArea.setText("Раунд второй!\n");
         }
+        textArea.repaint();
         boolean roundFinished = false;
         List<ServerThread> answeredClients = new ArrayList<>();
         while (!roundFinished){
